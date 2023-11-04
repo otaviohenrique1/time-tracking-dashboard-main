@@ -130,13 +130,20 @@ main {
   cursor: pointer;
 }
 
-.info__horas {
+.info__data {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+
+.data__horas {
   color: var(--white);
   font-size: 3rem;
   font-weight: 300;
 }
 
-.info__previous {
+.data__previous {
   color: var(--desaturated-blue);
   font-size: 0.95rem;
   font-weight: 400;
@@ -203,9 +210,16 @@ main {
 }
 
 @media screen and (max-width: 600px) {
+  body {
+    align-items: start;
+    padding-top: 10%;
+  }  
+
   main {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(7, 1fr);
+    width: 500px;
+    height: 1000px;
   }
 
   .item-1 {
@@ -223,6 +237,12 @@ main {
   .item-1__botoes {
     flex-direction: row;
   }
+
+  .info__data {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }  
 
   .botoes__botao {
     text-align: center;
