@@ -1,5 +1,3 @@
-// import * as data from "../data.json";
-
 const botoes = document.querySelectorAll(".botoes__botao");
 const infoCurrentWork = document.querySelector("#info_horas_work");
 const infoPreviousWork = document.querySelector("#info_previous_work");
@@ -15,15 +13,11 @@ const infoCurrentSelfCare = document.querySelector("#info_horas_self_care");
 const infoPreviousSelfCare = document.querySelector("#info_previous_self_care");
 
 let lista = [];
-// let listaFormatada = [];
 
 lista = await fetch('../data.json')
   .then(response => response.json())
   .then(data => {
-    // console.log(data); // Aqui você pode usar os dados JSON
-    // lista = data;
     return data;
-    // console.log("listaFormatada => ", listaFormatada);
   })
   .catch(error => {
     console.error('Erro ao carregar o arquivo JSON', error);
@@ -37,20 +31,23 @@ const exercise = lista[3].timeframes;
 const social = lista[4].timeframes;
 const selfCare = lista[5].timeframes;
 
-infoCurrentWork.innerHTML = work.daily.current;
-infoCurrentPlay.innerHTML = play.daily.current;
-infoCurrentStudy.innerHTML = study.daily.current;
-infoCurrentExercice.innerHTML = exercise.daily.current;
-infoCurrentSocial.innerHTML = social.daily.current;
-infoCurrentSelfCare.innerHTML = selfCare.daily.current;
-infoPreviousWork.innerHTML = work.daily.previous;
-infoPreviousPlay.innerHTML = play.daily.previous;
-infoPreviousStudy.innerHTML = study.daily.previous;
-infoPreviousExercice.innerHTML = exercise.daily.previous;
-infoPreviousSocial.innerHTML = social.daily.previous;
-infoPreviousSelfCare.innerHTML = selfCare.daily.previous;
+dia();
 
-botoes[0].addEventListener("click", () => {
+botoes.forEach((botao, index) => {
+  botao.addEventListener('click', () => {
+    botoes.forEach(b => b.classList.remove('botoes__botao--ativo'));
+    botao.classList.add('botoes__botao--ativo');
+    if (index == 0) {
+      dia();
+    } else if (index == 1) {
+      semana();
+    } else if (index == 2 ) {
+      mes();
+    }
+  });
+});
+
+function dia() {
   infoCurrentWork.innerHTML = work.daily.current;
   infoCurrentPlay.innerHTML = play.daily.current;
   infoCurrentStudy.innerHTML = study.daily.current;
@@ -63,9 +60,9 @@ botoes[0].addEventListener("click", () => {
   infoPreviousExercice.innerHTML = exercise.daily.previous;
   infoPreviousSocial.innerHTML = social.daily.previous;
   infoPreviousSelfCare.innerHTML = selfCare.daily.previous;
-});
+}
 
-botoes[1].addEventListener("click", () => {
+function semana() {
   infoCurrentWork.innerHTML = work.weekly.current;
   infoCurrentPlay.innerHTML = play.weekly.current;
   infoCurrentStudy.innerHTML = study.weekly.current;
@@ -78,9 +75,9 @@ botoes[1].addEventListener("click", () => {
   infoPreviousExercice.innerHTML = exercise.weekly.previous;
   infoPreviousSocial.innerHTML = social.weekly.previous;
   infoPreviousSelfCare.innerHTML = selfCare.weekly.previous;
-});
+}
 
-botoes[2].addEventListener("click", () => {
+function mes() {
   infoCurrentWork.innerHTML = work.monthly.current;
   infoCurrentPlay.innerHTML = play.monthly.current;
   infoCurrentStudy.innerHTML = study.monthly.current;
@@ -93,8 +90,4 @@ botoes[2].addEventListener("click", () => {
   infoPreviousExercice.innerHTML = exercise.monthly.previous;
   infoPreviousSocial.innerHTML = social.monthly.previous;
   infoPreviousSelfCare.innerHTML = selfCare.monthly.previous;
-});
-
-// Daily
-// Weekly
-// Monthly
+}
