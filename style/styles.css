@@ -50,7 +50,6 @@ main {
   text-align: center;
   border-radius: 1rem;
   background-repeat: no-repeat;
-  background-position: right 10px top -10px;
   content: "";
 }
 
@@ -62,31 +61,37 @@ main {
 .item-2 {
   background-color: var(--light-orange);
   background-image: url("../images/icon-work.svg");
+  background-position: right 10px top -10px;
 }
 
 .item-3 {
   background-color: var(--soft-blue);
   background-image: url("../images/icon-play.svg");
+  background-position: right 10px top -3px;
 }
 
 .item-4 {
   background-color: var(--light-red);
   background-image: url("../images/icon-study.svg");
+  background-position: right 10px top -11px;
 }
 
 .item-5 {
   background-color: var(--lime-green);
   background-image: url("../images/icon-exercise.svg");
+  background-position: right 10px top 0;
 }
 
 .item-6 {
   background-color: var(--violet);
   background-image: url("../images/icon-social.svg");
+  background-position: right 10px top -14px;
 }
 
 .item-7 {
   background-color: var(--soft-orange);
   background-image: url("../images/icon-self-care.svg");
+  background-position: right 10px top -11px;
 }
 
 .item__info {
